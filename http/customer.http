@@ -1,0 +1,19 @@
+### REGISTRAR CLIENTE POR MS-COSTOMER
+POST http://localhost:9091/v1/api/customer/save
+Content-Type: application/json
+
+{
+  "name": "Erwin",
+  "lastName": "Alejo",
+  "email": "alejo@gamjil.com"
+}
+
+### REGISTRAR PASANDO POR GATEWAY
+POST http://localhost:8282/ms-customer/v1/api/customer/save
+Content-Type: application/json
+
+{
+  "name": "Erwin",
+  "lastName": "Alejo",
+  "email": "alejo@gamjil.com"
+}
