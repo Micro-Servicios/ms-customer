@@ -1,5 +1,5 @@
 ### REGISTRAR CLIENTE POR MS-COSTOMER
-POST http://localhost:9091/v1/api/customer/save
+POST http://localhost:6945/v1/api/customer/save
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### REGISTRAR PASANDO POR GATEWAY
-POST http://localhost:8282/ms-customer/v1/api/customer/save
+POST http://localhost:8181/ms-customer/v1/api/customer/save
 Content-Type: application/json
 
 {
