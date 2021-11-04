@@ -3,9 +3,9 @@ POST http://localhost:6945/v1/api/customer/save
 Content-Type: application/json
 
 {
-  "name": "Erwin",
-  "lastName": "Alejo",
-  "email": "alejo@gamjil.com"
+  "name": "Erwin1",
+  "lastName": "Alejo1",
+  "email": "alejo1@gamjil.com"
 }
 
 ### REGISTRAR PASANDO POR GATEWAY
@@ -13,7 +13,22 @@ POST http://localhost:8181/ms-customer/v1/api/customer/save
 Content-Type: application/json
 
 {
-  "name": "Erwin",
-  "lastName": "Alejo",
-  "email": "alejo@gamjil.com"
+  "name": "Erwin2",
+  "lastName": "Alejo2",
+  "email": "alejo2@gamjil.com"
 }
+
+
+###
+
+GET http://localhost:6945/v1/api/customer/all
+Accept: application/json
+
+###
+
+GET http://localhost:8181/ms-customer/v1/api/customer/all
+Accept: application/json
+
+###
+GET http://localhost:8181/ms-customer/v1/api/customer?customerId=4
+Accept: application/json
