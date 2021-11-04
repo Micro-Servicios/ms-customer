@@ -39,6 +39,9 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+
+			<!--SE IMPLEMENTA EL CONTROL
+			<artifactId>spring-cloud-starter-eureka</artifactId>  -->
 		</dependency>
 
 		<dependency>
@@ -55,6 +58,9 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
