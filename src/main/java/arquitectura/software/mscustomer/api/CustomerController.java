@@ -41,6 +41,17 @@ public class CustomerController {
         }
     }
 
+    @RequestMapping(path = "/customerId", method = RequestMethod.GET)
+    public Boolean getValueCustomerId(@RequestParam Integer customerId){
+        Optional<Customer> customerOptional =customerRepository.findById(customerId);
+        if(customerOptional.isPresent()){
+            Customer customer = customerOptional.get();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
 }
