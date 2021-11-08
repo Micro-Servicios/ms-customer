@@ -1,25 +1,6 @@
 spring:
   application:
-    name: ms-customer
-  h2:
-    console:
-      enabled: true
+    name: msCustomer
+
 server:
-  port: 6945
-
-eureka:
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 1
-    lease-expiration-duration-in-seconds: 1
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    serviceUrl:
-      defaultZone: http://localhost:8762/eureka
-
-management:
-  endpoints:
-    shutdown:
-      enabled: true
-      sensitive: false
+  port: 6666
