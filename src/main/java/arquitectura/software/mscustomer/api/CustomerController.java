@@ -3,6 +3,8 @@ package arquitectura.software.mscustomer.api;
 
 import arquitectura.software.mscustomer.entity.Customer;
 import arquitectura.software.mscustomer.repository.CustomerRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +16,17 @@ import java.util.Optional;
 @RequestMapping("/v1/api/customer")
 public class CustomerController {
 
+    private static Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
+
     @Autowired
     private CustomerRepository customerRepository;
-    @Value("${server.port}")
-    private String serverPort;
+    //@Value("${server.port}")
+    //private String serverPort;
 
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     public Customer saveCustomer(@RequestBody Customer customer){
-        System.out.println("REGISTRAR CLIENTE desde el puerto"+serverPort);
+        //System.out.println("REGISTRAR CLIENTE desde el puerto"+serverPort);
+        LOGGER.info("Iniciando proceso para registrar cleinte: con los siguientes datos, {} ",customer);
         return customerRepository.save(customer);
     }
 
