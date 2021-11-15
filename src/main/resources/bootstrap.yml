@@ -4,6 +4,5 @@ spring:
     name: customer
   cloud:
     config:
-      uri: http://localhost:8889
-      #uri: http://192.168.0.2:8889
+      uri: ${URI_CONFIG:http://localhost:8889}
       name: "ms-customer"

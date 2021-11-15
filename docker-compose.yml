@@ -37,6 +37,7 @@ services:
     environment:
       - "ZIPKIN_URL=http://192.168.0.2:9411"
       - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+      - "URI_CONFIG=http://192.168.0.2:8889"
     depends_on:
       ms-discovery:
         condition: service_started
@@ -64,6 +65,7 @@ services:
     environment:
       - "ZIPKIN_URL=http://192.168.0.2:9411"
       - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+      - "URI_CONFIG=http://192.168.0.2:8889"
     depends_on:
       ms-discovery:
         condition: service_started

@@ -29,6 +29,11 @@ Accept: application/json
 GET http://localhost:8181/ms-customer/v1/api/customer/all
 Accept: application/json
 
+
+###
+GET http//localhost:6945/v1/api/customer?customerId=4
+Accept: application/json
+
 ###
 GET http://localhost:8181/ms-customer/v1/api/customer?customerId=4
 Accept: application/json
