@@ -1,0 +1,71 @@
+version: "2.4"
+services:
+  ms-discovery:
+    image: ms-discovery:0.0.1
+    mem_limit: 150m
+    ports:
+      - "8762:8762"
+    #environment:
+    #  - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+  ms-config_server:
+    image: ms-config_server:0.0.1
+    mem_limit: 150m
+    ports:
+      - "8889:8889"
+    environment:
+      - "ZIPKIN_URL=http://192.168.0.2:9411"
+      - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+    depends_on:
+      ms-discovery:
+        condition: service_started
+  ms-gateway:
+    image: ms-gateway:0.0.1
+    mem_limit: 150m
+    ports:
+      - "8181:8181"
+    environment:
+      - "ZIPKIN_URL=http://192.168.0.2:9411"
+      - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+    depends_on:
+      ms-discovery:
+        condition: service_started
+  ms-customer:
+    image: ms-customer:0.0.1
+    mem_limit: 200m
+    ports:
+    - "6945:6945"
+    environment:
+      - "ZIPKIN_URL=http://192.168.0.2:9411"
+      - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+    depends_on:
+      ms-discovery:
+        condition: service_started
+      ms-config_server:
+        condition: service_started
+  ms-product:
+    image: ms-product:0.0.1
+    mem_limit: 200m
+    ports:
+      - "7878:7878"
+    environment:
+      - "ZIPKIN_URL=http://192.168.0.2:9411"
+      - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+      - "URI_CONFIG=http://192.168.0.2:8889"
+    depends_on:
+      ms-discovery:
+        condition: service_started
+      ms-config_server:
+        condition: service_started
+  ms-sale:
+    image: ms-sale:0.0.1
+    mem_limit: 200m
+    ports:
+      - "8743:8743"
+    environment:
+      - "ZIPKIN_URL=http://192.168.0.2:9411"
+      - "EUREKA_URI=http://192.168.0.2:8762/eureka"
+    depends_on:
+      ms-discovery:
+        condition: service_started
+      ms-config_server:
+        condition: service_started
