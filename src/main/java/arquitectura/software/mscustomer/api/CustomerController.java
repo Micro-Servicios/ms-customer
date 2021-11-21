@@ -20,28 +20,32 @@ public class CustomerController {
 
     @Autowired
     private CustomerRepository customerRepository;
-    //@Value("${server.port}")
-    //private String serverPort;
 
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     public Customer saveCustomer(@RequestBody Customer customer){
-        //System.out.println("REGISTRAR CLIENTE desde el puerto"+serverPort);
         LOGGER.info("Iniciando proceso para registrar cleinte: con los siguientes datos, {} ",customer);
         return customerRepository.save(customer);
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET)
     public List<Customer> getAllCustomer(){
-        return customerRepository.findAll();
+        List<Customer> customers =customerRepository.findAll();
+        if (customers.size()>0){
+            LOGGER.info("SE ENCOTRO LOS DATOS DE LOS USUARIOS");
+        }
+        else LOGGER.warn("NO SE ENCONTRO LOS DATOS DE LOS USUARIOS");
+        return customers;
     }
 
     @RequestMapping( method = RequestMethod.GET)
     public Customer getCustomer(@RequestParam Integer customerId) throws Exception {
         Optional<Customer> customerOptional =customerRepository.findById(customerId);
         if(customerOptional.isPresent()){
+            LOGGER.info("SE ENCONTRO AL USUARIO");
             Customer customer = customerOptional.get();
             return customer;
         }else{
+            LOGGER.error("NO SE ENCONTRO AL USUARIO");
             throw new Exception("No se encuentra el usuario");
         }
     }
@@ -50,9 +54,10 @@ public class CustomerController {
     public Boolean getValueCustomerId(@RequestParam Integer customerId){
         Optional<Customer> customerOptional =customerRepository.findById(customerId);
         if(customerOptional.isPresent()){
-            Customer customer = customerOptional.get();
+            LOGGER.info("SE ENCONTRO EL USUARIO");
             return true;
         }else{
+            LOGGER.error("NO EXISTE EL USUARIO");
             return false;
         }
     }
