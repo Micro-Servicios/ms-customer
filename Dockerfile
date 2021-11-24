@@ -11,7 +11,8 @@ COPY ${DEPENDENCY}/BOOT-INF/classes /app
 #COPY target/ms-customer-0.0.1.jar ms-customer-0.0.1.jar
 #ENV SPRING_PROFILE local
 ENV SERVER_PORT 6945
-ENV EUREKA_URI http://localhost:8762/eureka
+ENV EUREKA_URI "http://localhost:8762/eureka"
+ENV URI_CONFIG "http://localhost:8889"
 
 ENTRYPOINT ["java", \
             "-cp", \
