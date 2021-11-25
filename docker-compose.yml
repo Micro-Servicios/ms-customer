@@ -24,21 +24,6 @@ services:
     #  - "EUREKA_URI=http://192.168.0.2:8762/eureka"
     volumes:
       - "/opt/local:/opt/arqutectura/logs"
-  #ms-config_server:
-  #  image: ms-config_server:0.0.1
-  #  mem_limit: 150m
-  #  ports:
-  #    - "8889:8889"
-  #  networks:
-  #    - software
-  #  environment:
-  #    - "ZIPKIN_URL=http://192.168.0.2:9411"
-  #    - "EUREKA_URI=http://192.168.0.2:8762/eureka"
-  #  depends_on:
-  #    ms-discovery:
-  #      condition: service_started
-  #  volumes:
-  #    - "/opt/local:/opt/arqutectura/logs"
   ms-gateway:
     image: ms-gateway:0.0.1
     mem_limit: 150m
@@ -73,8 +58,6 @@ services:
     depends_on:
       ms-discovery:
         condition: service_started
-      ms-config_server:
-        condition: service_started
   ms-product:
     image: ms-product:0.0.1
     mem_limit: 200m
@@ -91,8 +74,6 @@ services:
       - "/opt/local:/opt/arqutectura/logs"
     depends_on:
       ms-discovery:
-        condition: service_started
-      ms-config_server:
         condition: service_started
   ms-sale:
     image: ms-sale:0.0.1
@@ -111,5 +92,5 @@ services:
     depends_on:
       ms-discovery:
         condition: service_started
-      ms-config_server:
-        condition: service_started
+    #  ms-config_server:
+    #    condition: service_started
